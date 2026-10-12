@@ -1,0 +1,26 @@
+[project]
+name = "cite-check"
+version = "0.1.0"
+description = "Verify that an AI-written report's citations actually say what it claims."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["httpx>=0.27", "pypdf>=4", "rapidfuzz>=3.9"]
+
+[project.scripts]
+cite-check = "cite_check.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cite_check"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100

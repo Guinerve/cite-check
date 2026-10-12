@@ -1,0 +1,35 @@
+{
+  "note": "SYNTHETIC SEED SET. The sources are invented fictional documents, so no real citation is misrepresented. It exists to exercise the pipeline and catch regressions. It is NOT evidence of real-world accuracy; the real ~40-claim hand-labelled set is still to be built.",
+  "sources": {
+    "https://example.test/marren": "Lake Marren is a freshwater lake in the northern highlands. It covers 42 square kilometres and has a maximum depth of 118 metres. The lake was formed by glacial action roughly 12,000 years ago. Its main inflow is the Tarn River, and it drains south through the Polder Gorge. The lake freezes over completely in about one winter in five. A survey in 2019 recorded 14 native fish species. The most common is the silver char, which makes up about 60 percent of the catch. Commercial fishing has been banned since 1994.",
+    "https://example.test/brightwave": "Brightwave Energy reported revenue of 3.4 billion dollars for the 2023 financial year, up 8 percent on the previous year. The company employs about 5,200 people across 11 countries. Its largest business is offshore wind, which contributed 55 percent of revenue. The board announced a plan to build two new wind farms by 2027. The chief executive said the company expects to remain profitable through 2025. Brightwave does not pay a dividend and has said it will reinvest earnings. The firm was founded in 1998 in Rotterdam.",
+    "https://example.test/sleep-study": "In a trial of 240 adults aged 30 to 50, participants who kept a regular bedtime for eight weeks reported better sleep quality than those who did not. The effect was modest: scores improved by 0.6 points on a ten-point scale. Researchers found no change in total sleep duration. The study was not blinded, and participants knew which group they were in. Dropout was 12 percent. The authors caution that the results may not apply to shift workers, who were excluded.",
+    "https://example.test/harbour-bridge": "The Calder Harbour Bridge opened in 1967 after four years of construction. It is a steel arch bridge with a main span of 503 metres. The bridge carries six lanes of road traffic and two rail tracks. About 98,000 vehicles cross it on an average weekday. A toll was introduced in 1989 and removed in 2008. The bridge underwent major strengthening work between 2012 and 2014. It was named after the engineer Margaret Calder, who led the design team."
+  },
+  "claims": [
+    {"text": "Lake Marren covers 42 square kilometres.", "url": "https://example.test/marren", "label": "supported"},
+    {"text": "The lake was carved out by glaciers about 12,000 years ago.", "url": "https://example.test/marren", "label": "supported"},
+    {"text": "The lake has a maximum depth of 150 metres.", "url": "https://example.test/marren", "label": "partial"},
+    {"text": "Silver char accounts for roughly 90 percent of the fish catch in Lake Marren.", "url": "https://example.test/marren", "label": "partial"},
+    {"text": "Lake Marren is home to a population of freshwater dolphins.", "url": "https://example.test/marren", "label": "unsupported"},
+    {"text": "Tourism to the lake doubled after a 2015 hotel opened on its shore.", "url": "https://example.test/marren", "label": "unsupported"},
+    {"text": "Brightwave Energy's revenue grew 8 percent to 3.4 billion dollars in the 2023 financial year.", "url": "https://example.test/brightwave", "label": "supported"},
+    {"text": "Offshore wind made up 55 percent of Brightwave's revenue.", "url": "https://example.test/brightwave", "label": "supported"},
+    {"text": "Brightwave employs about 8,000 people in 11 countries.", "url": "https://example.test/brightwave", "label": "partial"},
+    {"text": "Brightwave plans to build two new wind farms by 2030.", "url": "https://example.test/brightwave", "label": "partial"},
+    {"text": "Brightwave pays shareholders a quarterly dividend.", "url": "https://example.test/brightwave", "label": "unsupported"},
+    {"text": "The company acquired a solar manufacturer in Spain last year.", "url": "https://example.test/brightwave", "label": "unsupported"},
+    {"text": "Adults who kept a regular bedtime for eight weeks reported better sleep quality.", "url": "https://example.test/sleep-study", "label": "supported"},
+    {"text": "Total sleep duration did not change among participants.", "url": "https://example.test/sleep-study", "label": "supported"},
+    {"text": "The trial of 500 adults showed a large improvement in sleep quality.", "url": "https://example.test/sleep-study", "label": "partial"},
+    {"text": "The regular bedtime improved sleep for shift workers as well.", "url": "https://example.test/sleep-study", "label": "partial"},
+    {"text": "The study found that caffeine after noon reduces deep sleep by 20 minutes.", "url": "https://example.test/sleep-study", "label": "unsupported"},
+    {"text": "Participants wore wrist sensors to measure heart rate variability.", "url": "https://example.test/sleep-study", "label": "unsupported"},
+    {"text": "The Calder Harbour Bridge opened in 1967.", "url": "https://example.test/harbour-bridge", "label": "supported"},
+    {"text": "The bridge has a main span of 503 metres and carries six lanes of traffic.", "url": "https://example.test/harbour-bridge", "label": "supported"},
+    {"text": "About 150,000 vehicles cross the bridge on an average weekday.", "url": "https://example.test/harbour-bridge", "label": "partial"},
+    {"text": "The bridge tolls were removed in 2015.", "url": "https://example.test/harbour-bridge", "label": "partial"},
+    {"text": "The bridge was designed by a team led by a famous Danish architect.", "url": "https://example.test/harbour-bridge", "label": "unsupported"},
+    {"text": "Cyclists were banned from the bridge following a fatal crash in 2011.", "url": "https://example.test/harbour-bridge", "label": "unsupported"}
+  ]
+}

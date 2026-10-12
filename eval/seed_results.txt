@@ -1,0 +1,8 @@
+judge: heuristic   claims: 24   accuracy: 87.5%
+  supported    precision 100%  recall  88%  (n=8)
+  partial      precision  78%  recall  88%  (n=8)
+  unsupported  precision  88%  recall  88%  (n=8)
+confusion (expected->got): {'partial->partial': 7, 'partial->unsupported': 1, 'supported->partial': 1, 'supported->supported': 7, 'unsupported->partial': 1, 'unsupported->unsupported': 7}
+  MISS expected supported, got partial: The lake was carved out by glaciers about 12,000 years ago.  [only 5/8 claim terms found]
+  MISS expected unsupported, got partial: Lake Marren is home to a population of freshwater dolphins.  [only 3/6 claim terms found]
+  MISS expected partial, got unsupported: The trial of 500 adults showed a large improvement in sleep quality.  [numbers not found in the passage: 500]
