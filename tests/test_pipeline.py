@@ -92,3 +92,12 @@ def test_unwritable_cache_does_not_abort(tmp_path):
     f = Fetcher(cache_dir=tmp_path / "x", http=httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(200, text=PAGE, headers={"content-type": "text/html"}))))
     f.cache_dir = tmp_path / "does" / "not" / "exist"  # writes will fail
     assert f.get("https://ex.test/a").ok
+
+
+def test_llm_supported_verdict_is_downgraded_when_the_claim_adds_a_number():
+    body = '{"verdict":"supported","reason":"matches"}'
+    c = httpx.Client(transport=httpx.MockTransport(lambda r: httpx.Response(200, json={"response": body})))
+    j = OllamaJudge(http=c)
+    ok = j.judge("Uluru is a World Heritage Site", [(0.9, "Uluru is listed as a UNESCO World Heritage Site.")])
+    added = j.judge("Uluru has been a World Heritage Site since 1987", [(0.9, "Uluru is listed as a UNESCO World Heritage Site.")])
+    assert ok.label == "supported" and added.label == "partial" and "1987" in added.reason

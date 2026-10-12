@@ -1,0 +1,199 @@
+{
+ "note": "Real Wikipedia lead sections (CC BY-SA 4.0). Supported = LLM paraphrase of a source sentence; partial = source sentence with one number changed; unsupported = sentence from a different article. Labels are correct by construction, but the claims are not natural AI-report claims. Hand curation: the 16 LLM paraphrases were all read; 4 added unsupported detail and were relabelled partial, 1 changed the subject (Canberra to 'the country') and was dropped.",
+ "sources": {
+  "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge": "The Sydney Harbour Bridge is a steel through arch bridge in Sydney, New South Wales, Australia, spanning Sydney Harbour from the central business district (CBD) to the North Shore. The view of the bridge, the harbour, and the nearby Sydney Opera House is widely regarded as an iconic image of Sydney, and of Australia itself. Nicknamed \"the Coathanger\" because of its arch-based design, the bridge carries rail, vehicular, bicycle and pedestrian traffic.\nUnder the direction of John Bradfield of the New South Wales Department of Public Works, the bridge was designed and built by British firm Dorman Long of Middlesbrough, and opened in 1932. The bridge's general design, which Bradfield tasked the NSW Department of Public Works with producing, was a rough copy of the Hell Gate Bridge in New York City. The design chosen from the tender responses was original work created by Dorman Long, who leveraged some of the design from its own Tyne Bridge.\nIt is the eleventh-longest spanning-arch bridge in the world and the tallest steel arch bridge, measuring 134 m (440 ft) from top to water level. It was also the world's widest long-span bridge, at 48.8 m (160 ft) wide, until construction of the new Port Mann Bridge in Vancouver was completed in 2012.\nThe road over the bridge is currently owned by the state government through NSW Motorways.\n\n",
+  "https://en.wikipedia.org/wiki/Uluru": "Uluru (; Pitjantjatjara: Uluṟu [ˈʊlʊɻʊ]), also known as Ayers Rock ( AIRS) and officially gazetted as Uluru / Ayers Rock, is a large sandstone monolith. It crops out near the centre of Australia in the southern part of the Northern Territory, 335 km (208 mi) south-west of Alice Springs.\nUluru is sacred to the Pitjantjatjara, the Aboriginal people of the area, one of the groups collectively known as the Aṉangu. The area around the formation is home to an abundance of springs, waterholes, rock caves and ancient paintings. Uluru is listed as a UNESCO World Heritage Site. Uluru and Kata Tjuta (also known as the Olgas) are the two major features of the Uluṟu-Kata Tjuṯa National Park.\nUluru is one of Australia's most recognisable natural landmarks and has been a popular destination for tourists since the late 1930s. It is also one of the most important indigenous sites in Australia.",
+  "https://en.wikipedia.org/wiki/Murray_River": "The Murray River (in South Australia: River Murray; Ngarrindjeri: Millewa, Yorta Yorta: Dhungala or Tongala) is a river in Southeastern Australia. It is Australia's longest river, spanning 2,508 km (1,558 mi). Its tributaries include five of the next six longest rivers of Australia (the Murrumbidgee, Darling, Lachlan, Warrego and Paroo Rivers). Together with that of the Murray, the catchments of these rivers form the Murray–Darling basin, which covers about one-seventh the area of Australia. It is widely considered Australia's most important irrigated region.\nThe Murray rises in the Australian Alps, draining the western side of Australia's highest mountains, then meanders northwest across Australia's inland plains, forming the border between the states of New South Wales and Victoria as it flows into South Australia. From an east–west direction it turns south at Morgan for its final 315 km (196 mi), reaching the eastern edge of Lake Alexandrina, which fluctuates in salinity. The water then flows through several channels around Hindmarsh Island and Mundoo Island. There it is joined by lagoon water from The Coorong to the south-east before emptying into Encounter Bay (a bay of the Southern Ocean) through the Murray Mouth, 10 km (6.2 mi) east of Goolwa South. Despite discharging considerable volumes of water at times, particularly before the advent of large-scale river regulation, the waters at the Murray Mouth are almost invariably slow and shallow.\nAs of 2010, the Murray River system received just 58 per cent of its natural flow, though this figure varies considerably.\nThe border between Victoria and New South Wales (NSW) lies along the top of the southern or left bank of\nthe Murray River. It is not the middle of the river, instead, it is defined by the top of the southern (Victorian) bank. Consequently, up until the point it enters South Australia, the entire Murray River—including the water and the riverbed—falls entirely  within New South Wales.",
+  "https://en.wikipedia.org/wiki/Snowy_Mountains_Scheme": "The Snowy Mountains Scheme, also known as the Snowy Hydro or the Snowy scheme, is a hydroelectricity and irrigation complex in south-east Australia. Near the border of New South Wales and Victoria, the scheme consists of sixteen major dams; nine power stations; two pumping stations; and 225 kilometres (140 mi) of tunnels, pipelines and aqueducts that were constructed between 1949 and 1974. The scheme was completed under the supervision of Chief Engineer, Sir William Hudson.  It is the largest engineering project undertaken in Australia.\nThe water of the Snowy River and some of its tributaries, much of which formerly flowed southeast onto the river flats of East Gippsland, and into Bass Strait of the Tasman Sea, is captured at high elevations and diverted inland to the Murray and Murrumbidgee Rivers irrigation areas.  The scheme includes two major tunnel systems constructed through the continental divide of the Snowy Mountains, known in Australia as the Great Dividing Range. The water falls 800 metres (2,600 ft) and travels through large hydro-electric power stations which generate peak-load power for the Australian Capital Territory, New South Wales and Victoria. The Scheme also provides some  security of water flows to the Murray-Darling basin, providing approximately 2,100 gigalitres (7.4×1010 cu ft) of water a year to the basin for use in Australia's irrigated agriculture industry.\nIn 2016, the Snowy Mountains Scheme was added to the Australian National Heritage List.\n\n",
+  "https://en.wikipedia.org/wiki/Canberra": "Canberra (  KAN-brə; Ngunawal: Kanbarra) is the capital city of Australia and the largest population centre in the Australian Capital Territory. With an estimated population of 484,630 as of 2025, Canberra is Australia's largest inland city and the eighth-largest Australian city by population. The city occupies most of the northern quadrant of the Australian Capital Territory, and its urban sprawl borders the state of New South Wales to the northwest, northeast and southeast. The Brindabellas are located south and west of the city, and form the northern part of the Australian Alps, the country's highest mountain range.\nCanberra was established following the federation of the Australian colonies to serve as the seat of government for the new nation, being a compromise between Sydney and Melbourne, Australia’s two largest cities. The area chosen for the capital had been inhabited by Aboriginal Australians for up to 21,000 years, by groups including the Ngunnawal and Ngambri. European settlement commenced in the first half of the 19th century, evidenced by surviving landmarks such as St John's Anglican Church and Blundells Cottage. On 1 January 1901, federation of the colonies of Australia was achieved. The capital city was founded and formally named as Canberra in 1913. Unusual among Australian cities, it is an entirely planned city, grounded in a design by American architects Walter Burley Griffin and Marion Mahony Griffin. The Griffins' plan was influenced by the garden city movement and featured geometric motifs aligned with significant topographical landmarks such as Black Mountain, Mount Ainslie, Capital Hill and City Hill. Its design can be viewed from its highest point at the Telstra Tower and the summit of Mount Ainslie. Other notable features include the National Arboretum and Lake Burley Griffin.\nAs the seat of the Government of Australia, Canberra is home to many important institutions of the federal government, national monuments and museums. These include Parliament House, Government House, the High Court building and the headquarters of numerous government agencies. Social and cultural institutions of national significance include the Australian War Memorial, the Australian National University, the Royal Australian Mint, the Australian Institute of Sport, the National Gallery, the National Museum and the National Library. The city is home to many important institutions of the Australian Defence Force including the Royal Military College Duntroon and the Australian Defence Force Academy. It hosts all foreign embassies in Australia as well as regional headquarters of many international organisations, not-for-profit groups, lobbying groups and professional associations.\nCanberra has been ranked among the world's best cities to live in and visit. Compared to the national averages, the unemployment rate is lower and the average income higher; tertiary education levels are higher, while the population is younger. At the 2021 Census, 28.7% of Canberra's inhabitants were reported as having been born overseas. The Australian Public Service accounted for about 25% all jobs as at November 2025. Other major industries include health care, professional services, education and training, retail, accommodation and food, and construction. Annual cultural events include Floriade, the largest flower festival in the Southern Hemisphere, the Enlighten Festival, Skyfire, the National Multicultural Festival and Summernats. Canberra's main sporting venues are Canberra Stadium and Manuka Oval. The city is served with domestic and international flights at Canberra Airport, while interstate train and coach services depart from Canberra railway station and the Jolimont Centre respectively. City Interchange and Alinga Street station form the hub of Canberra's bus and light rail transport network.",
+  "https://en.wikipedia.org/wiki/Great_Barrier_Reef": "The Great Barrier Reef is the world's largest coral reef system, composed of over 2,900 individual reefs and 900 islands stretching for over 2,300 kilometres (1,400 mi) over an area of approximately 344,400 square kilometres (133,000 mi2). The reef is located in the Coral Sea, off the coast of Queensland, Australia.  It is separated from the coast by a channel 160 kilometres (100 mi) wide in places and over 61 metres (200 ft) deep. The Great Barrier Reef can be seen from outer space and is the world's biggest single structure made by living organisms. This reef structure is composed of and built by billions of tiny organisms, known as coral polyps. It supports a wide diversity of life and was selected as a World Heritage Site in 1981. CNN labelled it one of the Seven Natural Wonders of the World in 1997. Australian World Heritage places included it in its list in 2007. The Queensland National Trust named it a state icon of Queensland in 2006.\nA large part of the reef is protected by the Great Barrier Reef Marine Park, which helps to limit the impact of human use, such as fishing and tourism. Other environmental pressures on the reef and its ecosystem include runoff of humanmade pollutants, climate change accompanied by mass coral bleaching, dumping of dredging sludge and cyclic population outbreaks of the crown-of-thorns starfish. According to a study published in October 2012 by the Proceedings of the National Academy of Sciences, the reef has lost more than half its coral cover since 1985, a finding reaffirmed by a 2020 study which found over half of the reef's coral cover to have been lost between 1995 and 2017, with the effects of a widespread 2020 bleaching event not yet quantified.\nThe Great Barrier Reef has long been known to and used by the Aboriginal Australian and Torres Strait Islander peoples, and is an important part of local groups' cultures and spirituality. The reef is a very popular destination for tourists, especially in the Whitsunday Islands and Cairns regions. Tourism is an important economic activity for the region, generating over AUD$3 billion per year. In November 2014, Google launched Google Underwater Street View in 3D of the Great Barrier Reef.\nA March 2016 report stated that coral bleaching was more widespread than previously thought, seriously affecting the northern parts of the reef as a result of warming ocean temperatures. In October 2016, Outside published an obituary for the reef; the article was criticised for being premature and hindering efforts to bolster the resilience of the reef. In March 2017, the journal Nature published a paper showing that huge sections of an 800-kilometre (500 mi) stretch in the northern part of the reef had died in the course of 2016 of high water temperatures, an event that the authors put down to the effects of global climate change. The percentage of baby corals being born on the Great Barrier Reef dropped drastically in 2018 and scientists are describing it as the early stage of a \"huge natural selection event unfolding\". Many of the mature breeding adults died in the bleaching events of 2016–17, leading to low coral birth rates. The types of corals that reproduced also changed, leading to a \"long-term reorganisation of the reef ecosystem if the trend continues.\"\nThe Great Barrier Reef Marine Park Act 1975 (section 54) stipulates an Outlook Report on the Reef's health, pressures, and future every five years. The last report was published in 2019. In March 2022, another mass bleaching event has been confirmed, which raised further concerns about the future of this reef system, especially when considering the possible effects of El Niño weather phenomenon.\nThe Australian Institute of Marine Science conducts annual surveys of the Great Barrier Reef's status, and the 2022 report showed the greatest recovery in 36 years. It is mainly due to the regrowth of two-thirds of the reef by the fast-growing Acropora coral, which is the dominant coral there.",
+  "https://en.wikipedia.org/wiki/Lake_Eyre": "Lake Eyre ( AIR), officially known as Kati Thanda–Lake Eyre, is an endorheic lake in the east-central part of the Far North region of South Australia, some 700 km (430 mi) north of Adelaide. It is the largest ephemeral endorheic lake on the Australian continent, covering over 9,000 km2 (3,500 sq mi). The shallow lake is the depocentre of the vast endorheic Lake Eyre basin, and contains the lowest natural point in Australia, at approximately 15 m (49 ft) below sea level. The lake is most often empty, filling mostly when flooding occurs upstream in Channel Country, but almost always partially. On the rare occasions that it fills completely (only three times between 1860 and 2025), it is the largest lake in Australia, covering an area of up to 9,500 km2 (3,668 sq mi). When the lake is full, it has the same salinity as seawater, but becomes hypersaline as the lake dries up and the water evaporates. To the north of the lake is the Simpson Desert.\nThe lake was named in honour of Edward John Eyre, the first European to see it in 1840. It was officially renamed in December 2012 to include its Aboriginal name in the Arabana language, Kati Thanda, in accordance with a policy of dual naming. The native title over most of the lake and surrounding region is held by the Arabana people, with the eastern portion allocated to the Dieri people.\nThe lake is one of the most important sites for waterbirds in Australia, and was the location of several attempts at creating a land speed record in the 1960s. The lake is covered by two protected areas: the Elliot Price Conservation Park (a small area, gazetted 1967) and the much larger Kati Thanda–Lake Eyre National Park surrounding it (gazetted 1985). When it was declared a national park, covering an area of 13,488.37 km2 (5,207.89 sq mi), restrictions were put on the activities of visitors to the park, including swimming, boating, off-track driving, and landing aircraft.",
+  "https://en.wikipedia.org/wiki/Mount_Kosciuszko": "Mount Kosciuszko ( KOZ-ee-USK-oh; Polish pronunciation: [kɔɕˈt͡ɕuʂ.kɔ] kosh-CHOOSH-koh; Ngarigo: Kunama Namadgi) is the highest mountain of mainland Australia, at 2,228 metres (7,310 ft) above sea level. It is located on the Main Range of the Snowy Mountains in Kosciuszko National Park, a part of the Australian Alps National Parks and Reserves, in New South Wales, and is located west of Crackenback and close to Jindabyne, near the border with Victoria. Mount Kosciuszko is ranked 35th by topographic isolation.\n\n"
+ },
+ "claims": [
+  {
+   "text": "Dorman Long's original design, selected from the tender submissions, drew inspiration from his earlier Tyne Bridge project.",
+   "url": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+   "label": "supported",
+   "origin": "The design chosen from the tender responses was original work created by Dorman Long, who leveraged some of the design from its own Tyne Bridge."
+  },
+  {
+   "text": "The \"Coathanger\" bridge is known for its distinctive arched shape, supporting a wide range of transportation modes including rail, cars, bicycles, and pedestrians, with no reported incidents or casualties.",
+   "url": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+   "label": "partial",
+   "origin": "Nicknamed \"the Coathanger\" because of its arch-based design, the bridge carries rail, vehicular, bicycle and pedestrian traffic.",
+   "curation": "LLM paraphrase added a detail not in the source sentence: relabelled partial by hand"
+  },
+  {
+   "text": "It crops out near the centre of Australia in the southern part of the Northern Territory, 335 km  south-west of Alice Springs.",
+   "url": "https://en.wikipedia.org/wiki/Sydney_Harbour_Bridge",
+   "label": "unsupported",
+   "origin": "from Uluru"
+  },
+  {
+   "text": "The Uluṟu-Kata Tjuṯa National Park comprises two prominent landmarks: Uluru and Kata Tjuta.",
+   "url": "https://en.wikipedia.org/wiki/Uluru",
+   "label": "supported",
+   "origin": "Uluru and Kata Tjuta  are the two major features of the Uluṟu-Kata Tjuṯa National Park."
+  },
+  {
+   "text": "The iconic Uluru has been designated as a UNESCO World Heritage Site since its listing in 1987.",
+   "url": "https://en.wikipedia.org/wiki/Uluru",
+   "label": "partial",
+   "origin": "Uluru is listed as a UNESCO World Heritage Site.",
+   "curation": "LLM paraphrase added a detail not in the source sentence: relabelled partial by hand"
+  },
+  {
+   "text": "It crops out near the centre of Australia in the southern part of the Northern Territory, 502.5 km  south-west of Alice Springs.",
+   "url": "https://en.wikipedia.org/wiki/Uluru",
+   "label": "partial",
+   "origin": "It crops out near the centre of Australia in the southern part of the Northern Territory, 335 km  south-west of Alice Springs."
+  },
+  {
+   "text": "As the seat of the Government of Australia, Canberra is home to many important institutions of the federal government, national monuments and museums.",
+   "url": "https://en.wikipedia.org/wiki/Uluru",
+   "label": "unsupported",
+   "origin": "from Canberra"
+  },
+  {
+   "text": "The Murray River holds the distinction of being Australia's longest river at approximately 2,508 kilometers in length.",
+   "url": "https://en.wikipedia.org/wiki/Murray_River",
+   "label": "supported",
+   "origin": "It is Australia's longest river, spanning 2,508 km ."
+  },
+  {
+   "text": "The combined watersheds of the Murray River and its tributaries comprise the Murray-Darling Basin, a vast region covering approximately 1/7th of Australia's total land area.",
+   "url": "https://en.wikipedia.org/wiki/Murray_River",
+   "label": "supported",
+   "origin": "Together with that of the Murray, the catchments of these rivers form the Murray–Darling basin, which covers about one-seventh the area of Australia."
+  },
+  {
+   "text": "It is Australia's longest river, spanning 1504.8 km .",
+   "url": "https://en.wikipedia.org/wiki/Murray_River",
+   "label": "partial",
+   "origin": "It is Australia's longest river, spanning 2,508 km ."
+  },
+  {
+   "text": "The reef is a very popular destination for tourists, especially in the Whitsunday Islands and Cairns regions.",
+   "url": "https://en.wikipedia.org/wiki/Murray_River",
+   "label": "unsupported",
+   "origin": "from Great Barrier Reef"
+  },
+  {
+   "text": "Located in south-east Australia, the Snowy Mountains Scheme encompasses a comprehensive hydroelectricity and irrigation system, also referred to as the Snowy Hydro or simply the Snowy scheme.",
+   "url": "https://en.wikipedia.org/wiki/Snowy_Mountains_Scheme",
+   "label": "supported",
+   "origin": "The Snowy Mountains Scheme, also known as the Snowy Hydro or the Snowy scheme, is a hydroelectricity and irrigation complex in south-east Australia."
+  },
+  {
+   "text": "Along the border of New South Wales and Victoria, a comprehensive infrastructure project comprises sixteen significant dams, nine electricity-generating power stations, two water transfer pumping stations, and 225 kilometers of underground tunnels, pipes, and canals built over a period spanning from 1949 to 1974.",
+   "url": "https://en.wikipedia.org/wiki/Snowy_Mountains_Scheme",
+   "label": "supported",
+   "origin": "Near the border of New South Wales and Victoria, the scheme consists of sixteen major dams; nine power stations; two pumping stations; and 225 kilometres  of tunnels, pipelines and aqueducts that were constructed between 1949 and 1974."
+  },
+  {
+   "text": "Near the border of New South Wales and Victoria, the scheme consists of sixteen major dams; nine power stations; two pumping stations; and 450 kilometres  of tunnels, pipelines and aqueducts that were constructed between 1949 and 1974.",
+   "url": "https://en.wikipedia.org/wiki/Snowy_Mountains_Scheme",
+   "label": "partial",
+   "origin": "Near the border of New South Wales and Victoria, the scheme consists of sixteen major dams; nine power stations; two pumping stations; and 225 kilometres  of tunnels, pipelines and aqueducts that were constructed between 1949 and 1974."
+  },
+  {
+   "text": "The bridge's general design, which Bradfield tasked the NSW Department of Public Works with producing, was a rough copy of the Hell Gate Bridge in New York City.",
+   "url": "https://en.wikipedia.org/wiki/Snowy_Mountains_Scheme",
+   "label": "unsupported",
+   "origin": "from Sydney Harbour Bridge"
+  },
+  {
+   "text": "Canberra's City Interchange and Alinga Street station serve as the central point for its comprehensive bus and light rail transportation system, which encompasses over 100 km of routes.",
+   "url": "https://en.wikipedia.org/wiki/Canberra",
+   "label": "partial",
+   "origin": "City Interchange and Alinga Street station form the hub of Canberra's bus and light rail transport network.",
+   "curation": "LLM paraphrase added a detail not in the source sentence: relabelled partial by hand"
+  },
+  {
+   "text": "The Australian Public Service accounted for about 50% all jobs as at November 2025.",
+   "url": "https://en.wikipedia.org/wiki/Canberra",
+   "label": "partial",
+   "origin": "The Australian Public Service accounted for about 25% all jobs as at November 2025."
+  },
+  {
+   "text": "It is the largest ephemeral endorheic lake on the Australian continent, covering over 9,000 km2 .",
+   "url": "https://en.wikipedia.org/wiki/Canberra",
+   "label": "unsupported",
+   "origin": "from Lake Eyre"
+  },
+  {
+   "text": "Between 2016 and 2017, a significant proportion of mature breeding corals succumbed to bleaching, resulting in reduced coral reproduction rates.",
+   "url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+   "label": "supported",
+   "origin": "Many of the mature breeding adults died in the bleaching events of 2016–17, leading to low coral birth rates."
+  },
+  {
+   "text": "In the Coral Sea, situated approximately 1,100 kilometers (670 miles) offshore from the eastern coast of Queensland, a coral reef exists.",
+   "url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+   "label": "partial",
+   "origin": "The reef is located in the Coral Sea, off the coast of Queensland, Australia.",
+   "curation": "LLM paraphrase added a detail not in the source sentence: relabelled partial by hand"
+  },
+  {
+   "text": "Many of the mature breeding adults died in the bleaching events of 2016–34, leading to low coral birth rates.",
+   "url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+   "label": "partial",
+   "origin": "Many of the mature breeding adults died in the bleaching events of 2016–17, leading to low coral birth rates."
+  },
+  {
+   "text": "In 2016, the Snowy Mountains Scheme was added to the Australian National Heritage List.",
+   "url": "https://en.wikipedia.org/wiki/Great_Barrier_Reef",
+   "label": "unsupported",
+   "origin": "from Snowy Mountains Scheme"
+  },
+  {
+   "text": "Seawater's characteristic salinity level remains constant when a lake reaches maximum capacity; however, as the lake depletes its water supply through evaporation, its salinity increases to become significantly more concentrated than seawater.",
+   "url": "https://en.wikipedia.org/wiki/Lake_Eyre",
+   "label": "supported",
+   "origin": "When the lake is full, it has the same salinity as seawater, but becomes hypersaline as the lake dries up and the water evaporates."
+  },
+  {
+   "text": "Only when it reaches full capacity does Lake fill become the country's premier waterbody, spanning approximately 9,500 square kilometers.",
+   "url": "https://en.wikipedia.org/wiki/Lake_Eyre",
+   "label": "supported",
+   "origin": "On the rare occasions that it fills completely , it is the largest lake in Australia, covering an area of up to 9,500 km2 ."
+  },
+  {
+   "text": "On the rare occasions that it fills completely , it is the largest lake in Australia, covering an area of up to 5700 km2 .",
+   "url": "https://en.wikipedia.org/wiki/Lake_Eyre",
+   "label": "partial",
+   "origin": "On the rare occasions that it fills completely , it is the largest lake in Australia, covering an area of up to 9,500 km2 ."
+  },
+  {
+   "text": "The water falls 800 metres  and travels through large hydro-electric power stations which generate peak-load power for the Australian Capital Territory, New South Wales and Victoria.",
+   "url": "https://en.wikipedia.org/wiki/Lake_Eyre",
+   "label": "unsupported",
+   "origin": "from Snowy Mountains Scheme"
+  },
+  {
+   "text": "Kosciuszko Mountain holds the 35th position on a list of most isolated peaks globally.",
+   "url": "https://en.wikipedia.org/wiki/Mount_Kosciuszko",
+   "label": "supported",
+   "origin": "Mount Kosciuszko is ranked 35th by topographic isolation."
+  },
+  {
+   "text": "Kosciuszko Mountain stands as the tallest peak on Australian soil, measuring 2,228 meters in height relative to sea level.",
+   "url": "https://en.wikipedia.org/wiki/Mount_Kosciuszko",
+   "label": "supported",
+   "origin": "Mount Kosciuszko  is the highest mountain of mainland Australia, at 2,228 metres  above sea level."
+  },
+  {
+   "text": "Mount Kosciuszko  is the highest mountain of mainland Australia, at 3342 metres  above sea level.",
+   "url": "https://en.wikipedia.org/wiki/Mount_Kosciuszko",
+   "label": "partial",
+   "origin": "Mount Kosciuszko  is the highest mountain of mainland Australia, at 2,228 metres  above sea level."
+  },
+  {
+   "text": "As the seat of the Government of Australia, Canberra is home to many important institutions of the federal government, national monuments and museums.",
+   "url": "https://en.wikipedia.org/wiki/Mount_Kosciuszko",
+   "label": "unsupported",
+   "origin": "from Canberra"
+  }
+ ]
+}

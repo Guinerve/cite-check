@@ -1,0 +1,17 @@
+judge: heuristic   claims: 30   accuracy: 60.0%
+  supported    precision 100%  recall   9%  (n=11)
+  partial      precision  75%  recall  82%  (n=11)
+  unsupported  precision  47%  recall 100%  (n=8)
+confusion (expected->got): {'partial->partial': 9, 'partial->unsupported': 2, 'supported->partial': 3, 'supported->supported': 1, 'supported->unsupported': 7, 'unsupported->unsupported': 8}
+  MISS expected supported, got partial: Dorman Long's original design, selected from the tender submissions, drew inspiration from his earlier Tyne Bridge project.  [only 7/13 claim terms found]
+  MISS expected partial, got unsupported: The "Coathanger" bridge is known for its distinctive arched shape, supporting a wide range of transportation modes including rail, cars, bicycles, and pedestrians, with no reported incidents or casualties.  [no passage resembles the claim]
+  MISS expected supported, got unsupported: The Murray River holds the distinction of being Australia's longest river at approximately 2,508 kilometers in length.  [no passage resembles the claim]
+  MISS expected supported, got unsupported: The combined watersheds of the Murray River and its tributaries comprise the Murray-Darling Basin, a vast region covering approximately 1/7th of Australia's total land area.  [numbers not found in the passage: 1, 7]
+  MISS expected supported, got partial: Located in south-east Australia, the Snowy Mountains Scheme encompasses a comprehensive hydroelectricity and irrigation system, also referred to as the Snowy Hydro or simply the Snowy scheme.  [only 8/14 claim terms found]
+  MISS expected supported, got partial: Along the border of New South Wales and Victoria, a comprehensive infrastructure project comprises sixteen significant dams, nine electricity-generating power stations, two water transfer pumping stations, and 225 kilometers of underground tunnels, pipes, and canals built over a period spanning from 1949 to 1974.  [only 17/32 claim terms found]
+  MISS expected partial, got unsupported: Canberra's City Interchange and Alinga Street station serve as the central point for its comprehensive bus and light rail transportation system, which encompasses over 100 km of routes.  [numbers not found in the passage: 100]
+  MISS expected supported, got unsupported: Between 2016 and 2017, a significant proportion of mature breeding corals succumbed to bleaching, resulting in reduced coral reproduction rates.  [no passage resembles the claim]
+  MISS expected supported, got unsupported: Seawater's characteristic salinity level remains constant when a lake reaches maximum capacity; however, as the lake depletes its water supply through evaporation, its salinity increases to become significantly more concentrated than seawater.  [no passage resembles the claim]
+  MISS expected supported, got unsupported: Only when it reaches full capacity does Lake fill become the country's premier waterbody, spanning approximately 9,500 square kilometers.  [no passage resembles the claim]
+  MISS expected supported, got unsupported: Kosciuszko Mountain holds the 35th position on a list of most isolated peaks globally.  [no passage resembles the claim]
+  MISS expected supported, got unsupported: Kosciuszko Mountain stands as the tallest peak on Australian soil, measuring 2,228 meters in height relative to sea level.  [no passage resembles the claim]

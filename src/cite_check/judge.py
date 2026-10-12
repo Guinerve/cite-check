@@ -101,7 +101,13 @@ class OllamaJudge:
             label = str(out.get("verdict", "")).lower()
             if label not in {SUPPORTED, PARTIAL, UNSUPPORTED}:
                 raise ValueError(f"bad verdict {label!r}")
-            return Verdict(label, passages[0][1], passages[0][0], str(out.get("reason", "")), self.name)
+            reason = str(out.get("reason", ""))
+            if label == SUPPORTED:
+                # An LLM can wave through a claim that adds a figure the source never states. Numbers are checkable.
+                missing = sorted(set(numbers(claim)) - set(numbers(text)))
+                if missing:
+                    label, reason = PARTIAL, f"{reason} [downgraded: numbers not in the passages: {', '.join(missing)}]"
+            return Verdict(label, passages[0][1], passages[0][0], reason, self.name)
         except (httpx.HTTPError, ValueError, KeyError, TypeError, AttributeError, json.JSONDecodeError) as exc:
             base.reason += f" (LLM judge failed: {type(exc).__name__}; used heuristic)"
             return base

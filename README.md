@@ -29,23 +29,31 @@ uv sync
 uv run cite-check report.md                    # offline heuristic judge, writes report.check.html
 uv run cite-check report.md --llm qwen3:4b       # local Ollama judge
 uv run python -m cite_check.evaluate eval/seed_dataset.json
-uv run pytest -q    # 16 tests
+uv run pytest -q    # 17 tests
 ```
 
 ## How I know it's right
 
-**Honest status: the ~40-claim hand-labelled set from the plan does not exist yet.** What exists is a 24-claim *synthetic* seed set (`eval/seed_dataset.json`): four invented documents, with 8 supported, 8 partial (wrong number or overreach) and 8 fabricated claims. It checks that the pipeline works; it says little about real-world accuracy. The heuristic thresholds were adjusted after seeing it, so its numbers are in-sample.
+**Two evaluation sets, and the second changes the story.**
 
-| Judge | Accuracy | supported P / R | partial P / R | unsupported P / R |
+1. `eval/seed_dataset.json`: 24 claims on four *invented* documents. Claims there are near-verbatim, so it flatters the offline heuristic: **87.5 %** accuracy for the heuristic, 83.3 % for `qwen3:4b`. It is useful as a regression test, not as evidence.
+2. `eval/real_dataset.json` (built by `scripts/build_real_set.py`): **30 claims against 8 real Wikipedia lead sections** (CC BY-SA 4.0). *Supported* claims are genuine LLM paraphrases (`llama3.2:3b`) of source sentences; *partial* claims are a source sentence with one number changed, or a paraphrase that added a detail the source doesn't contain; *unsupported* claims are sentences from a different article cited against this one. I read every paraphrase: 4 added unsupported detail and were relabelled partial, 1 changed the subject and was dropped. Labels are correct by construction, but these are not natural AI-report claims, and it is still only 30 claims.
+
+| Judge on the real set | Accuracy | supported P / R | partial P / R | unsupported P / R |
 |---|---:|---:|---:|---:|
-| heuristic (offline) | 87.5 % | 100 % / 88 % | 78 % / 88 % | 88 % / 88 % |
-| `qwen3:4b` via Ollama | 83.3 % | 89 % / 100 % | 100 % / 50 % | 73 % / 100 % |
+| offline heuristic | **60.0 %** | 100 % / **9 %** | 75 % / 82 % | 47 % / 100 % |
+| `qwen3:4b` | 73.3 % | 73 % / 100 % | 100 % / 27 % | 67 % / 100 % |
+| `qwen3:4b` + number check | 80.0 % | 91 % / 91 % | 86 % / 55 % | 67 % / 100 % |
 
-(`eval/seed_results.txt`, `eval/seed_results_qwen3-4b.txt`.)
+(`eval/real_results_*.txt`.)
 
-Where they fail: the heuristic cannot handle paraphrase ("carved out by glaciers" vs "formed by glacial action") and gives fabricated claims partial credit when they share topic words. The LLM catches every fabricated claim and every supported one, but calls wrong numbers `unsupported` ("contradicted") where my labels say `partial`, and once accepted "about 98,000" as supporting "about 150,000". Whether a contradicted number is partial or unsupported is a labelling decision to settle before building the real set.
+What this shows:
 
-Parser, fetcher (mocked HTTP), end-to-end verdicts, multi-source claims and the HTML report are covered by 16 unit tests.
+- **The offline heuristic does not work on paraphrase** (supported recall 9 %): "holds the distinction of being Australia's longest river at approximately 2,508 kilometers" scores as unrelated to "It is Australia's longest river, spanning 2,508 km". Treat it as a no-LLM fallback for near-verbatim claims only. Embedding retrieval is the obvious next step.
+- **The LLM judge reads paraphrase well but waves through added detail**: 4 of 11 partial claims (a made-up year, distance and "no reported incidents") were accepted as fully supported. The "number check" row downgrades a *supported* verdict to partial when the claim contains a number absent from every retrieved passage. **I designed that check after seeing these misses, so 80 % is partly in-sample.** It cannot catch an added non-numeric fact ("no reported incidents" still gets through).
+- Claims with a **changed number** are mostly called `unsupported` by the LLM (the source states a different figure). Whether that is `partial` or `unsupported` is a labelling decision I still have not settled; it costs the partial recall above.
+
+Parser, fetcher (mocked HTTP), end-to-end verdicts, multi-source claims and the HTML report are covered by 17 unit tests.
 
 ## Limits
 
@@ -55,9 +63,9 @@ Judges support, not truth: a claim can be faithfully cited from a wrong source. 
 
 ## Next (tomorrow)
 
-- Take 2–3 real AI-generated reports, hand-label ~40 claims (including fabricated ones) → real precision/recall.
+- Hand-label claims from 2–3 *real* AI-generated reports (the current real set is built from Wikipedia sentences, not natural report claims).
 - Decide partial-vs-unsupported for wrong numbers.
-- Add embedding retrieval (pull an embedding model into Ollama).
+- Add embedding retrieval (pull an embedding model into Ollama): the lexical heuristic fails on paraphrase.
 - Run end-to-end on live URLs and look at the HTML report.
 
 ## Stretch
