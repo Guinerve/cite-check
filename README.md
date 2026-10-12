@@ -32,6 +32,10 @@ uv run python -m cite_check.evaluate eval/seed_dataset.json
 uv run pytest -q    # 17 tests
 ```
 
+## End-to-end check
+
+Run on 2026-10-13 against live Wikipedia URLs with `--llm qwen3:4b` (`examples/sample_report.md`, 6 claims: 3 true, 2 fabricated, 1 dead link): supported 3, unsupported 2 (it caught "designed by Albert Einstein, opened 1950" because the source says Dorman Long, 1932), unreachable 1; exit code 3 with a warning. Looking at the HTML report found two bugs, now fixed: the citation anchor text ("Wikipedia") was left inside the claim, and source links were unreadable blue on the dark theme.
+
 ## How I know it's right
 
 **Two evaluation sets, and the second changes the story.**
@@ -66,7 +70,6 @@ Judges support, not truth: a claim can be faithfully cited from a wrong source. 
 - Hand-label claims from 2–3 *real* AI-generated reports (the current real set is built from Wikipedia sentences, not natural report claims).
 - Decide partial-vs-unsupported for wrong numbers.
 - Add embedding retrieval (pull an embedding model into Ollama): the lexical heuristic fails on paraphrase.
-- Run end-to-end on live URLs and look at the HTML report.
 
 ## Stretch
 

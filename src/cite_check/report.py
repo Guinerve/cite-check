@@ -22,14 +22,14 @@ def render_html(results: list[Result], title: str = "Citation check") -> str:
 <p class="why">{html.escape(r.verdict.reason)}</p>{passage}{f"<ul>{others}</ul>" if others else ""}</article>''')
     return f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><style>
-:root{{--bg:#fafafa;--fg:#1f2328;--muted:#656d76;--card:#fff;--line:#d8dee4}}
-@media(prefers-color-scheme:dark){{:root{{--bg:#0d1117;--fg:#e6edf3;--muted:#8b949e;--card:#161b22;--line:#30363d}}}}
+:root{{--bg:#fafafa;--fg:#1f2328;--muted:#656d76;--card:#fff;--line:#d8dee4;--link:#0969da}}
+@media(prefers-color-scheme:dark){{:root{{--bg:#0d1117;--fg:#e6edf3;--muted:#8b949e;--card:#161b22;--line:#30363d;--link:#58a6ff}}}}
 body{{margin:0 auto;max-width:820px;padding:24px 16px 64px;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}}
 h1{{margin:0 0 8px}}.chip{{display:inline-block;border:1px solid var(--c);color:var(--c);border-radius:99px;padding:2px 10px;font-size:13px;margin-right:6px}}
 article{{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:8px;padding:10px 14px;margin:12px 0}}
 .tag{{color:var(--c);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.05em}}.claim{{margin:4px 0;font-weight:600}}
 .src,.why{{margin:2px 0;font-size:13px;color:var(--muted);word-break:break-all}}blockquote{{margin:8px 0 0;padding:6px 10px;border-left:3px solid var(--line);color:var(--muted);font-size:14px}}
-.note{{font-size:13px;color:var(--muted)}}</style>
+.note{{font-size:13px;color:var(--muted)}}a{{color:var(--link)}}</style>
 <h1>{html.escape(title)}</h1><p>{chips}</p>
 <p class="note">Green means the cited page contains text supporting the claim. It does not mean the claim is true, only that it is faithfully cited.</p>
 {"".join(items)}</html>'''

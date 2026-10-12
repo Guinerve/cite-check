@@ -56,8 +56,14 @@ def _find_refs(text: str) -> dict[str, str]:
     return refs
 
 
+_TRAILING_CITE = re.compile(rf"\s*\[[^\]]{{1,40}}\]\({URL}[^)]*\)(?=\s*[.!?]?\s*$)")
+
+
 def _clean(sentence: str) -> str:
-    s = _INLINE.sub(r"\1", sentence)
+    # A short link at the very end of the sentence is a citation ("[Wikipedia](url)"), not part of the claim.
+    # A link in the middle ("the [IEA](url) reported...") keeps its words.
+    s = _TRAILING_CITE.sub("", sentence)
+    s = _INLINE.sub(r"\1", s)
     s = _REF_USE.sub("", s)
     s = _BARE.sub("", s)
     s = re.sub(r"[*_`]+", "", s)

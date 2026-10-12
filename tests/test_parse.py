@@ -18,7 +18,7 @@ The grid operator said demand was flat (https://example.org/aemo).
 def test_extracts_claims_with_inline_numeric_and_bare_citations():
     claims = parse_report(REPORT)
     by_text = {c.text: c for c in claims}
-    assert by_text["Solar capacity grew by 24 percent in 2023 see IEA."].urls == ["https://example.org/iea.html"]
+    assert by_text["Solar capacity grew by 24 percent in 2023."].urls == ["https://example.org/iea.html"]
     assert any(c.urls == ["https://example.org/prices"] and c.text.startswith("Prices fell") for c in claims)
     assert any(c.urls == ["https://example.org/storage"] and "doubled" in c.text for c in claims)
     assert any(c.urls == ["https://example.org/aemo"] for c in claims)
@@ -48,3 +48,10 @@ def test_html_input():
 def test_line_numbers_survive_multiple_blank_lines():
     text = "# T\n\n\n\nFirst claim here is cited [a](https://example.org/a).\n\n\n\n\nSecond claim here is cited [b](https://example.org/b).\n"
     assert [c.line for c in parse_report(text)] == [5, 10]
+
+
+def test_trailing_citation_anchor_is_not_part_of_the_claim_but_inline_links_keep_their_words():
+    (a,) = parse_report("The bridge opened in 1932 [Wikipedia](https://example.org/b).\n")
+    assert a.text == "The bridge opened in 1932." and a.urls == ["https://example.org/b"]
+    (b,) = parse_report("The [IEA](https://example.org/iea) reported that solar grew 24 percent in 2023.\n")
+    assert "IEA reported" in b.text
