@@ -4,23 +4,40 @@ import html
 
 from .pipeline import Result, summarise
 
-COLORS = {"supported": ("#1a7f4b", "Green"), "partial": ("#b35900", "Amber"), "unsupported": ("#cf222e", "Red"), "unreachable": ("#6e7781", "Grey")}
-LABEL = {"supported": "Supported", "partial": "Partial", "unsupported": "Unsupported", "unreachable": "Source unreachable"}
+COLORS = {
+    "supported": ("#1a7f4b", "Green"),
+    "partial": ("#b35900", "Amber"),
+    "unsupported": ("#cf222e", "Red"),
+    "unreachable": ("#6e7781", "Grey"),
+}
+LABEL = {
+    "supported": "Supported",
+    "partial": "Partial",
+    "unsupported": "Unsupported",
+    "unreachable": "Source unreachable",
+}
 
 
 def render_html(results: list[Result], title: str = "Citation check") -> str:
     counts = summarise(results)
-    chips = " ".join(f'<span class="chip" style="--c:{COLORS[k][0]}">{LABEL[k]} {v}</span>' for k, v in counts.items())
+    chips = " ".join(
+        f'<span class="chip" style="--c:{COLORS[k][0]}">{LABEL[k]} {v}</span>'
+        for k, v in counts.items()
+    )
     items = []
     for r in results:
         c = COLORS[r.verdict.label][0]
-        passage = f'<blockquote>{html.escape(r.verdict.passage)}</blockquote>' if r.verdict.passage else ""
-        others = "".join(f'<li>{html.escape(u)}: {LABEL[v.label]}</li>' for u, v in r.others)
-        items.append(f'''<article style="--c:{c}"><div class="tag">{LABEL[r.verdict.label]}</div>
+        passage = (
+            f"<blockquote>{html.escape(r.verdict.passage)}</blockquote>"
+            if r.verdict.passage
+            else ""
+        )
+        others = "".join(f"<li>{html.escape(u)}: {LABEL[v.label]}</li>" for u, v in r.others)
+        items.append(f"""<article style="--c:{c}"><div class="tag">{LABEL[r.verdict.label]}</div>
 <p class="claim">{html.escape(r.claim.text)}</p>
-<p class="src"><a href="{html.escape(r.url)}">{html.escape(r.url)}</a> · line {r.claim.line} · judge: {html.escape(r.verdict.judge)}</p>
-<p class="why">{html.escape(r.verdict.reason)}</p>{passage}{f"<ul>{others}</ul>" if others else ""}</article>''')
-    return f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<p class="src">{f'<a href="{html.escape(r.url)}">{html.escape(r.url)}</a>' if r.url else "no source URL"} · line {r.claim.line} · judge: {html.escape(r.verdict.judge)}</p>
+<p class="why">{html.escape(r.verdict.reason)}</p>{passage}{f"<ul>{others}</ul>" if others else ""}</article>""")
+    return f"""<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title><style>
 :root{{--bg:#fafafa;--fg:#1f2328;--muted:#656d76;--card:#fff;--line:#d8dee4;--link:#0969da}}
 @media(prefers-color-scheme:dark){{:root{{--bg:#0d1117;--fg:#e6edf3;--muted:#8b949e;--card:#161b22;--line:#30363d;--link:#58a6ff}}}}
@@ -32,4 +49,4 @@ article{{background:var(--card);border:1px solid var(--line);border-left:6px sol
 .note{{font-size:13px;color:var(--muted)}}a{{color:var(--link)}}</style>
 <h1>{html.escape(title)}</h1><p>{chips}</p>
 <p class="note">Green means the cited page contains text supporting the claim. It does not mean the claim is true, only that it is faithfully cited.</p>
-{"".join(items)}</html>'''
+{"".join(items)}</html>"""

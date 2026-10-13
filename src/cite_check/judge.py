@@ -9,10 +9,24 @@ from typing import Protocol
 
 import httpx
 
-from .retrieve import content_words, numbers, score  # noqa: F401
+from .retrieve import content_words, numbers, score
 
 SUPPORTED, PARTIAL, UNSUPPORTED, UNREACHABLE = "supported", "partial", "unsupported", "unreachable"
-NEGATIONS = {"not", "no", "never", "without", "neither", "nor", "cannot", "fails", "failed", "decline", "declined", "decreased", "fell"}
+NEGATIONS = {
+    "not",
+    "no",
+    "never",
+    "without",
+    "neither",
+    "nor",
+    "cannot",
+    "fails",
+    "failed",
+    "decline",
+    "declined",
+    "decreased",
+    "fell",
+}
 
 
 @dataclass
@@ -53,7 +67,8 @@ class HeuristicJudge:
         # A claim that says "not/no/never" needs a negation in the passage sentence it best matches.
         best_sentence = max(re.split(r"(?<=[.!?])\s+", passage), key=lambda x: score(claim, x))
         neg_mismatch = bool(set(re.findall(r"[a-z]+", claim.lower())) & NEGATIONS) and not (
-            set(re.findall(r"[a-z]+", best_sentence.lower())) & NEGATIONS)
+            set(re.findall(r"[a-z]+", best_sentence.lower())) & NEGATIONS
+        )
         if missing:
             label = PARTIAL if sc >= self.partial else UNSUPPORTED
             reason = f"numbers not found in the passage: {', '.join(missing)}"
@@ -71,7 +86,12 @@ class HeuristicJudge:
 class OllamaJudge:
     """Ask a local LLM whether the passages entail the claim. Falls back to the heuristic if the model errors."""
 
-    def __init__(self, model: str = "qwen3:4b", host: str = "http://localhost:11434", http: httpx.Client | None = None):
+    def __init__(
+        self,
+        model: str = "qwen3:4b",
+        host: str = "http://localhost:11434",
+        http: httpx.Client | None = None,
+    ):
         self.model, self.host = model, host.rstrip("/")
         self.http = http or httpx.Client(timeout=120)
         self.name = f"ollama:{model}"
@@ -79,7 +99,7 @@ class OllamaJudge:
 
     PROMPT = (
         "You check citations. Decide whether the SOURCE PASSAGES support the CLAIM.\n"
-        "Answer with JSON only: {{\"verdict\": \"supported|partial|unsupported\", \"reason\": \"<one sentence>\"}}.\n"
+        'Answer with JSON only: {{"verdict": "supported|partial|unsupported", "reason": "<one sentence>"}}.\n'
         "supported = the passages state or directly imply everything in the claim, including numbers.\n"
         "partial = the passages support part of the claim, or the numbers/scope differ.\n"
         "unsupported = the passages do not say this, or contradict it.\n\n"
@@ -92,10 +112,17 @@ class OllamaJudge:
             return base
         text = "\n---\n".join(p for _, p in passages)
         try:
-            r = self.http.post(f"{self.host}/api/generate", json={
-                "model": self.model, "prompt": self.PROMPT.format(claim=claim, passages=text),
-                "stream": False, "format": "json", "think": False, "options": {"temperature": 0},
-            })
+            r = self.http.post(
+                f"{self.host}/api/generate",
+                json={
+                    "model": self.model,
+                    "prompt": self.PROMPT.format(claim=claim, passages=text),
+                    "stream": False,
+                    "format": "json",
+                    "think": False,
+                    "options": {"temperature": 0},
+                },
+            )
             r.raise_for_status()
             out = json.loads(r.json()["response"])
             label = str(out.get("verdict", "")).lower()
@@ -106,8 +133,18 @@ class OllamaJudge:
                 # An LLM can wave through a claim that adds a figure the source never states. Numbers are checkable.
                 missing = sorted(set(numbers(claim)) - set(numbers(text)))
                 if missing:
-                    label, reason = PARTIAL, f"{reason} [downgraded: numbers not in the passages: {', '.join(missing)}]"
+                    label, reason = (
+                        PARTIAL,
+                        f"{reason} [downgraded: numbers not in the passages: {', '.join(missing)}]",
+                    )
             return Verdict(label, passages[0][1], passages[0][0], reason, self.name)
-        except (httpx.HTTPError, ValueError, KeyError, TypeError, AttributeError, json.JSONDecodeError) as exc:
+        except (
+            httpx.HTTPError,
+            ValueError,
+            KeyError,
+            TypeError,
+            AttributeError,
+            json.JSONDecodeError,
+        ) as exc:
             base.reason += f" (LLM judge failed: {type(exc).__name__}; used heuristic)"
             return base

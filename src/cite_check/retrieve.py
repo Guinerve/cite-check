@@ -6,13 +6,92 @@ import re
 
 from rapidfuzz import fuzz
 
-STOP = set("""a an the and or but of to in on for with by from as at is are was were be been being it its this that these
-those which who whom has have had do does did not no can could will would should may might also than then so such
-into over under about more most less least very per via their there they them he she his her we our you your i""".split())
+STOP = {
+    "a",
+    "an",
+    "the",
+    "and",
+    "or",
+    "but",
+    "of",
+    "to",
+    "in",
+    "on",
+    "for",
+    "with",
+    "by",
+    "from",
+    "as",
+    "at",
+    "is",
+    "are",
+    "was",
+    "were",
+    "be",
+    "been",
+    "being",
+    "it",
+    "its",
+    "this",
+    "that",
+    "these",
+    "those",
+    "which",
+    "who",
+    "whom",
+    "has",
+    "have",
+    "had",
+    "do",
+    "does",
+    "did",
+    "not",
+    "no",
+    "can",
+    "could",
+    "will",
+    "would",
+    "should",
+    "may",
+    "might",
+    "also",
+    "than",
+    "then",
+    "so",
+    "such",
+    "into",
+    "over",
+    "under",
+    "about",
+    "more",
+    "most",
+    "less",
+    "least",
+    "very",
+    "per",
+    "via",
+    "their",
+    "there",
+    "they",
+    "them",
+    "he",
+    "she",
+    "his",
+    "her",
+    "we",
+    "our",
+    "you",
+    "your",
+    "i",
+}
 
 
 def content_words(text: str) -> list[str]:
-    return [stem(w) for w in re.findall(r"[a-z0-9][a-z0-9\-.%$]*", text.lower()) if w not in STOP and len(w) > 1]
+    return [
+        stem(w)
+        for w in re.findall(r"[a-z0-9][a-z0-9\-.%$]*", text.lower())
+        if w not in STOP and len(w) > 1
+    ]
 
 
 def stem(w: str) -> str:
@@ -24,7 +103,9 @@ def stem(w: str) -> str:
 
 
 def numbers(text: str) -> list[str]:
-    return [n.replace(",", "").rstrip(".") for n in re.findall(r"\d[\d,]*\.?\d*", text) if n.strip(",.")]
+    return [
+        n.replace(",", "").rstrip(".") for n in re.findall(r"\d[\d,]*\.?\d*", text) if n.strip(",.")
+    ]
 
 
 def score(claim: str, passage: str) -> float:

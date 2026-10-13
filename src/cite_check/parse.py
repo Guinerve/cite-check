@@ -14,8 +14,8 @@ from dataclasses import dataclass, field
 URL = r"https?://[^\s)\]>\"']+"
 _INLINE = re.compile(rf"\[([^\]]+)\]\(({URL})[^)]*\)")
 _REF_USE = re.compile(r"\[\^?(\d+)\]")
-_REF_DEF = re.compile(rf"^\s*\[\^?(\d+)\]:\s*(.*?)\s*$", re.M)
-_LIST_REF = re.compile(rf"^\s*(\d+)[.)]\s+(.*?)\s*$", re.M)
+_REF_DEF = re.compile(r"^\s*\[\^?(\d+)\]:\s*(.*?)\s*$", re.MULTILINE)
+_LIST_REF = re.compile(r"^\s*(\d+)[.)]\s+(.*?)\s*$", re.MULTILINE)
 _BARE = re.compile(rf"\((?:see\s+)?({URL})\)")
 _SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-Z0-9\"'\[(])")
 _HEADING_RE = re.compile(r"^\s*#{1,6}\s")
@@ -29,7 +29,9 @@ class Claim:
     line: int
     context: str = ""
     cite_labels: list[str] = field(default_factory=list)
-    unresolved: list[str] = field(default_factory=list)  # [n] markers with no definition in the report
+    unresolved: list[str] = field(
+        default_factory=list
+    )  # [n] markers with no reference entry in the report
 
 
 def html_to_markdown(src: str) -> str:
@@ -41,15 +43,35 @@ def html_to_markdown(src: str) -> str:
     return html.unescape(s)
 
 
+_REF_HEADING = re.compile(
+    r"^[ \t]*(?:#{1,6}[ \t]*)?(?:references|sources|bibliography|works cited|citations)[ \t]*:?[ \t]*$",
+    re.IGNORECASE | re.MULTILINE,
+)
+_ANY_HEADING = re.compile(r"^[ \t]*#{1,6}[ \t]", re.MULTILINE)
+
+
+def _reference_section(text: str) -> str | None:
+    """The text under the last "References" style heading, up to the next Markdown heading."""
+    heads = list(_REF_HEADING.finditer(text))
+    if heads:
+        body = text[heads[-1].end() :]
+        nxt = _ANY_HEADING.search(body)
+        return body[: nxt.start()] if nxt else body
+    low = text.lower()
+    if "reference" in low or "sources" in low or "bibliography" in low:
+        return text[low.rfind("\n#") :] if "\n#" in low else text
+    return None
+
+
 def _find_refs(text: str) -> dict[str, str]:
     refs: dict[str, str] = {}
     for m in _REF_DEF.finditer(text):
         u = re.search(URL, m.group(2))
         if u:
             refs[m.group(1)] = u.group(0).rstrip(".,;")
-    if "reference" in text.lower() or "sources" in text.lower() or "bibliography" in text.lower():
-        tail = text[text.lower().rfind("\n#"):] if "\n#" in text.lower() else text
-        for m in _LIST_REF.finditer(tail):
+    section = _reference_section(text)
+    if section is not None:
+        for m in _LIST_REF.finditer(section):
             u = re.search(URL, m.group(2))
             if u and m.group(1) not in refs:
                 refs[m.group(1)] = u.group(0).rstrip(".,;")
@@ -79,16 +101,25 @@ def parse_report(text: str, is_html: bool = False) -> list[Claim]:
     pos = 0
     blocks = []
     for sep in re.finditer(r"\n\s*\n", text):
-        blocks.append((text[pos:sep.start()], pos))
+        blocks.append((text[pos : sep.start()], pos))
         pos = sep.end()
     blocks.append((text[pos:], pos))
     for block, offset in blocks:
         line = text[:offset].count("\n") + 1
         if _HEADING_RE.match(block) or _REF_DEF.match(block):
             continue
-        if re.match(r"^\s*\d+[.)]\s+.*" + URL, block) and "reference" not in block.lower() and block.count("\n") == 0 and len(block.split()) < 30 and not _INLINE.search(block) and not _REF_USE.search(block):
+        if (
+            re.match(r"^\s*\d+[.)]\s+.*" + URL, block)
+            and "reference" not in block.lower()
+            and block.count("\n") == 0
+            and len(block.split()) < 30
+            and not _INLINE.search(block)
+            and not _REF_USE.search(block)
+        ):
             continue  # bibliography entry, not a claim
-        flat = re.sub(r"([.!?])((?:\[\^?\d+\])+)", r"\2\1", block.replace("\n", " "))  # "year.[1]" -> "year[1]."
+        flat = re.sub(
+            r"([.!?])((?:\[\^?\d+\])+)", r"\2\1", block.replace("\n", " ")
+        )  # "year.[1]" -> "year[1]."
         for sent in _SENT_SPLIT.split(flat):
             urls = [m.group(2) for m in _INLINE.finditer(sent)] + _BARE.findall(sent)
             labels = _REF_USE.findall(sent)
@@ -100,5 +131,15 @@ def parse_report(text: str, is_html: bool = False) -> list[Claim]:
             clean = _clean(sent)
             if len(clean.split()) < 3:
                 continue
-            claims.append(Claim(len(claims) + 1, clean, urls, line, context=_clean(block), cite_labels=labels, unresolved=missing if not urls else []))
+            claims.append(
+                Claim(
+                    len(claims) + 1,
+                    clean,
+                    urls,
+                    line,
+                    context=_clean(block),
+                    cite_labels=labels,
+                    unresolved=missing,
+                )
+            )
     return claims
