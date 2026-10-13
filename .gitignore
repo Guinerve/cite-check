@@ -10,3 +10,4 @@ data/raw/
 .env
 .DS_Store
 graphify-out/
+*.check.html

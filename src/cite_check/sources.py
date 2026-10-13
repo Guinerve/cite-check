@@ -222,7 +222,9 @@ class Fetcher:
             return Source(url, error=f"could not parse: {type(exc).__name__}")
         if len(text.split()) < 30:
             return Source(
-                url, text, error="page has almost no readable text (JavaScript or paywall?)"
+                url,
+                text,
+                error="page has almost no readable text (it may need JavaScript or a login)",
             )
         if key is not None:
             try:

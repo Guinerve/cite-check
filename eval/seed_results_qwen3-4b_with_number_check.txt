@@ -1,0 +1,8 @@
+judge: ollama:qwen3:4b   claims: 24   accuracy: 87.5%
+  supported    precision 100%  recall 100%  (n=8)
+  partial      precision 100%  recall  62%  (n=8)
+  unsupported  precision  73%  recall 100%  (n=8)
+confusion (expected->got): {'partial->partial': 5, 'partial->unsupported': 3, 'supported->supported': 8, 'unsupported->unsupported': 8}
+  MISS expected partial, got unsupported: The lake has a maximum depth of 150 metres.  [The source passages state that Lake Marren has a maximum depth of 118 metres, not 150 metres.]
+  MISS expected partial, got unsupported: The regular bedtime improved sleep for shift workers as well.  [The source passages explicitly state that shift workers were excluded from the study, so the results cannot be generalized to shift workers.]
+  MISS expected partial, got unsupported: The bridge tolls were removed in 2015.  [The source passages state that the toll was removed in 2008, not 2015, contradicting the claim.]

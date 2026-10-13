@@ -1,7 +1,7 @@
 [project]
 name = "cite-check"
 version = "0.1.0"
-description = "Verify that an AI-written report's citations actually say what it claims."
+description = "Checks that the sources cited in a report say what the report claims."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["httpx>=0.27", "pypdf>=4", "rapidfuzz>=3.9"]
